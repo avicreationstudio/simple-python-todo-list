@@ -20,7 +20,6 @@ def add_item():
     if task:
         Logic.insertTable(DB_NAME,TABLE_NAME,"name",task)
         entry_widget.delete(0, tk.END)
-        print('added')
         update_list_widget()
     else:
         Dialog.show_warning("You must enter a task.")
