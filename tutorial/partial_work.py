@@ -10,6 +10,20 @@ main_widget = Tk()
 main_widget.geometry("500x500")
 
 
+# NEW CODE 🚀🤪
+# ----------------------------------------------
+tk_PHONE_NO = StringVar(main_widget)
+tk_FIRST_NAME = StringVar(main_widget)
+tk_LAST_NAME = StringVar(main_widget)
+tk_SURNAME = StringVar(main_widget)
+tk_EMAIL = StringVar(main_widget)
+tk_JOB = StringVar(main_widget)
+tk_RELATIONSHIP = StringVar(main_widget)
+tk_ADDRESS = StringVar(main_widget)
+tk_BIRTHDAY = StringVar(main_widget)
+tk_NICK_NAME = StringVar(main_widget)
+# ----------------------------------------------
+
 
 
 # your code
@@ -18,88 +32,130 @@ main_widget.geometry("500x500")
 #    2. Entry   : input
 #    3. Button
 #    4. Listbox : table
-label_input_section = Label(main_widget, text="input section")
-label_input_section.grid(column=1, row=1)
-label_input_section.configure(font=HEADING_FONT)
 
-label_name = Label(main_widget, text="name :")
-label_name.grid(column=1, row=2)
-label_name.configure(font=NORMAL_FONT)
 
-label_age = Label(main_widget, text="age :")
-label_age.grid(column=1, row=3)
-label_age.configure(font=NORMAL_FONT)
+label_PHONE_NO = Label(main_widget,text="PHONE_NO")
+label_PHONE_NO.grid(column=1, row=1)
+input_PHONE_NO = Entry(main_widget,textvariable=tk_PHONE_NO)
+input_PHONE_NO.grid(column=2, row=1)
 
-label_dept = Label(main_widget, text="dept :")
-label_dept.grid(column=1, row=4)
-label_dept.configure(font=NORMAL_FONT)
+label_FIRST_NAME = Label(main_widget,text="FIRST_NAME")
+label_FIRST_NAME.grid(column=1, row=2)
+input_FIRST_NAME = Entry(main_widget,textvariable=tk_FIRST_NAME)
+input_FIRST_NAME.grid(column=2, row=2)
+
+label_LAST_NAME = Label(main_widget,text="LAST_NAME")
+label_LAST_NAME.grid(column=1, row=3)
+input_LAST_NAME = Entry(main_widget,textvariable=tk_LAST_NAME)
+input_LAST_NAME.grid(column=2, row=3)
+
+label_SURNAME = Label(main_widget,text="SURNAME")
+label_SURNAME.grid(column=1, row=4)
+input_SURNAME = Entry(main_widget,textvariable=tk_SURNAME)
+input_SURNAME.grid(column=2, row=4)
+
+label_EMAIL = Label(main_widget,text="EMAIL")
+label_EMAIL.grid(column=1, row=5)
+input_EMAIL = Entry(main_widget,textvariable=tk_EMAIL)
+input_EMAIL.grid(column=2, row=5)
+
+label_JOB = Label(main_widget,text="JOB")
+label_JOB.grid(column=1, row=6)
+input_JOB = Entry(main_widget,textvariable=tk_JOB)
+input_JOB.grid(column=2, row=6)
+
+label_RELATIONSHIP = Label(main_widget,text="RELATIONSHIP")
+label_RELATIONSHIP.grid(column=1, row=7)
+input_RELATIONSHIP = Entry(main_widget,textvariable=tk_RELATIONSHIP)
+input_RELATIONSHIP.grid(column=2, row=7)
+
+label_ADDRESS = Label(main_widget,text="ADDRESS")
+label_ADDRESS.grid(column=1, row=8)
+input_ADDRESS = Entry(main_widget,textvariable=tk_ADDRESS)
+input_ADDRESS.grid(column=2, row=8)
+
+label_BIRTHDAY = Label(main_widget,text="BIRTHDAY")
+label_BIRTHDAY.grid(column=1, row=9)
+input_BIRTHDAY = Entry(main_widget,textvariable=tk_BIRTHDAY)
+input_BIRTHDAY.grid(column=2, row=9)
+
+label_NICK_NAME = Label(main_widget,text="NICK_NAME")
+label_NICK_NAME.grid(column=1, row=10)
+input_NICK_NAME = Entry(main_widget,textvariable=tk_NICK_NAME)
+input_NICK_NAME.grid(column=2, row=10)
 
 # INPUT 🥺 Below code are input. 
 # Please use it with variables
 
-# NEW CODE 🚀🤪
-# ----------------------------------------------
-tk_name = StringVar(main_widget)
-tk_age = StringVar(main_widget)
-tk_dept = StringVar(main_widget)
-# ----------------------------------------------
-
-input_name = Entry(main_widget,textvariable=tk_name)
-input_name.grid(column=2,row=2)
-
-input_age = Entry(main_widget,textvariable=tk_age)
-input_age.grid(column=2,row=3)
-
-input_dept = Entry(main_widget,textvariable=tk_dept)
-input_dept.grid(column=2,row=4)
-
 # ----------------------------------------------------
 
-
-label_table = Label(main_widget, text="table")
-label_table.grid(column=2, row=6)
-label_table.configure(font=HEADING_FONT)
-
-listbox_table = Listbox(main_widget)
-listbox_table.grid(column=2, row=7)
-listbox_table.configure(width=50,height=10)
+list_box = Listbox(main_widget,width=100)
+list_box.grid(column=2,row=14)
 
 # --------------------------------------------------
 #  WHAT TO HAPPEN AFTER BTN is clicked.
 # --------------------------------------------------
 
 def handle_add_btn():
-    name = tk_name.get()
-    dept = tk_dept.get()
-    age = tk_age.get()
-
-    if "" in [ name.strip(), age.strip(), dept.strip() ]:
+    PHONE_NO = tk_PHONE_NO.get()
+    FIRST_NAME = tk_FIRST_NAME.get()
+    LAST_NAME = tk_LAST_NAME.get()
+    SURNAME = tk_SURNAME.get()
+    EMAIL = tk_EMAIL.get()
+    JOB = tk_JOB.get()
+    RELATIONSHIP = tk_RELATIONSHIP.get()
+    ADDRESS = tk_ADDRESS.get()
+    BIRTHDAY = tk_BIRTHDAY.get()
+    NICK_NAME = tk_NICK_NAME.get()
+    row = (
+        PHONE_NO.strip(),
+        FIRST_NAME.strip(),
+        LAST_NAME.strip(),
+        SURNAME.strip(),
+        EMAIL.strip(),
+        JOB.strip(),
+        RELATIONSHIP.strip(),
+        ADDRESS.strip(),
+        BIRTHDAY.strip(),
+        NICK_NAME.strip()
+    )
+    if "" in row:
         messagebox.showwarning("invalid","input box should not be empty")
     else:
         print("executed query")
         # add in table
-        row = (name, age, dept)
         MY_TABLE.append(row)
         # make input box empty after query is executed.
-        input_name.delete(0,END);
-        input_age.delete(0,END);
-        input_dept.delete(0,END);
+        input_PHONE_NO.delete(0,END)
+        input_FIRST_NAME.delete(0,END)
+        input_LAST_NAME.delete(0,END)
+        input_SURNAME.delete(0,END)
+        input_EMAIL.delete(0,END)
+        input_JOB.delete(0,END)
+        input_RELATIONSHIP.delete(0,END)   
+        input_ADDRESS.delete(0,END)
+        input_BIRTHDAY.delete(0,END)
+        input_NICK_NAME.delete(0,END)
         # update the list in list_box_table
         update_list()
 
 def handle_remove_btn():
-    select_id = listbox_table.get(listbox_table.curselection())[0]
+    select_id = list_box.get(list_box.curselection())[0]
 
 def update_list():
     for row in MY_TABLE:
-        listbox_table.insert(END,row)
+        list_box.insert(END,row)
 
 # --------------------------------------------------
 
-btn_add = Button(main_widget, text="add detail", command=handle_add_btn)
-btn_add.grid(column=2,row=5)
 
-btn_del = Button(main_widget, text="remove item",command=handle_remove_btn)
-btn_del.grid(column=2,row=10)
+Btn_add = Button(main_widget, text="Add contact")
+Btn_add.grid(column=2,row=12)
+Btn_add.configure(bg="#16A0D5", command=handle_add_btn)
+
+
+Btn_deleat = Button(main_widget, text="Deleat contact")
+Btn_deleat.grid(column=2,row=15)
+Btn_deleat.configure(bg="#16A0D5", command=handle_remove_btn)
 
 main_widget.mainloop()
