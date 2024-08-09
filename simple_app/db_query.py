@@ -19,23 +19,30 @@ TABLE_CONFIG = [
 
 
 
-class Logic:
+class DB_Query:
     def createTable(db_name, tb_name):
-        connection = sqlite3.connect(db_name)
-        
-        line1 = f"CREATE TABLE IF NOT EXISTS {tb_name} ("
-        line2 = "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-        line3 = " NOT NULL,".join(li[0] + " " + li[1] for li in TABLE_CONFIG )
-        line4 = ");"
-        query = " ".join([line1,line2,line3,line4])
+        try:
+            connection = sqlite3.connect(db_name)
+            
+            line1 = f"CREATE TABLE IF NOT EXISTS {tb_name} ("
+            line2 = "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            line3 = ",".join(li[0] + " " + li[1] for li in TABLE_CONFIG )
+            line4 = ");"
+            query = " ".join([line1,line2,line3,line4])
 
-        connection.execute(query)
-        connection.commit()
-        connection.close()
+            connection.execute(query)
+            connection.commit()
+            connection.close()
+            print("table created success")
+        except:
+            print("db not created.")
     
-    def insertTable(db_name, tb_name, column, value):
+    def insertTable(db_name, tb_name, columns, values):
         connection = sqlite3.connect(db_name)
-        query = f"INSERT INTO {tb_name} ( {column} ) VALUES ( '{value}' );"
+        column_queries = ",".join(columns)
+        values_queries = ",".join([f"'{x}'" for x in values])
+        query = f"INSERT INTO {tb_name} ( {column_queries} ) VALUES ( {values_queries} );"
+        print("query",query)
         connection.execute(query)
         connection.commit()
         connection.close()
